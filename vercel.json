@@ -3,18 +3,22 @@
   "builds": [
     {
       "src": "server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "index.html",
+          "style.css",
+          "script.js",
+          "chatbot.js",
+          "chatbot.css",
+          "fonts/**",
+          "icons/**",
+          "images/**"
+        ]
+      }
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "server.js"
-    },
-    {
-      "src": "/(.*\\.(css|js|jpg|jpeg|png|gif|svg|woff2|ttf|ico))",
-      "dest": "/$1"
-    },
     {
       "src": "/(.*)",
       "dest": "server.js"

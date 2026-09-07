@@ -11,6 +11,11 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname  = path.dirname(__filename);
 
 const app  = express();
 const PORT = process.env.PORT || 3001;
@@ -18,11 +23,11 @@ const PORT = process.env.PORT || 3001;
 // ── Middleware ───────────────────────────────────────────────
 app.use(cors({ origin: "*" }));
 app.use(express.json());
-app.use(express.static("."));
+app.use(express.static(__dirname));
 
 // ── Home route ───────────────────────────────────────────────
 app.get("/", (req, res) => {
-  res.sendFile("index.html", { root: "." });
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // ── System prompt ────────────────────────────────────────────

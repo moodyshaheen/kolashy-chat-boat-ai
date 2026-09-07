@@ -20,6 +20,11 @@ app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(express.static("."));
 
+// ── Home route ───────────────────────────────────────────────
+app.get("/", (req, res) => {
+  res.send("Server is running successfully! 🦞 Kolachi Seafood API is live.");
+});
+
 // ── System prompt ────────────────────────────────────────────
 const SYSTEM_PROMPT = `You are Kolachi, the friendly digital host for Kolachi Seafood — a luxury waterfront seafood restaurant at 42 Harbor Blvd, Waterfront District. Phone: (212) 555-0199.
 

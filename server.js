@@ -22,7 +22,7 @@ app.use(express.static("."));
 
 // ── Home route ───────────────────────────────────────────────
 app.get("/", (req, res) => {
-  res.send("Server is running successfully! 🦞 Kolachi Seafood API is live.");
+  res.sendFile("index.html", { root: "." });
 });
 
 // ── System prompt ────────────────────────────────────────────
